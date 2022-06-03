@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { getPopUp, getLinkOptions } from "./NavBar.util";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { ShoppingCart } from "../ShoppingCart";
+import { getSideMenu, getMainBarOptions } from "./NavBar.util";
 
 /**
  *
@@ -11,14 +12,45 @@ import { getPopUp, getLinkOptions } from "./NavBar.util";
  * @returns
  */
 const NavBar = ({ arrOptions, strPortalDivId }) => {
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+  const [mainLinkOptions, setMainLinkOptions] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setMainLinkOptions(getMainBarOptions(arrOptions));
+    console.log("NavBar.useEffect called!");
+  }, [arrOptions]);
 
   const openSideMenu = () => {
-    setIsPopUpOpen(true);
+    setIsSideMenuOpen(true);
   };
 
   const closeSideMenu = () => {
-    setIsPopUpOpen(false);
+    setIsSideMenuOpen(false);
+  };
+
+  /**
+   *
+   * @param {string} strPath
+   */
+  const onSideMenuNavigation = (strPath) => {
+    closeSideMenu();
+    navigate(strPath);
+  };
+
+  const getSidePopUp = () => {
+    if (isSideMenuOpen) {
+      return getSideMenu(
+        strPortalDivId,
+        closeSideMenu,
+        arrOptions,
+        onSideMenuNavigation,
+        location
+      );
+    }
+    return null;
   };
 
   return (
@@ -71,9 +103,7 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
               {/* <!-- Dynamic options --> */}
 
               <div className="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div className="h-full flex space-x-8">
-                  {getLinkOptions(arrOptions)}
-                </div>
+                <div className="h-full flex space-x-8">{mainLinkOptions}</div>
               </div>
 
               {/* Static Options */}
@@ -120,33 +150,14 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
 
                 {/* <!-- Cart --> */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 p-2 flex items-center">
-                    <svg
-                      className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                      ></path>
-                    </svg>
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
-                    </span>
-                  </a>
+                  <ShoppingCart strPortalDivId={strPortalDivId} />
                 </div>
               </div>
             </div>
           </div>
         </nav>
       </header>
-      {getPopUp(isPopUpOpen, strPortalDivId, closeSideMenu)}
+      {getSidePopUp()}
     </>
   );
 };

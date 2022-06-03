@@ -2,6 +2,7 @@ import "./App.css";
 import { getProductById } from "./services";
 import { Outlet, NavLink } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
+import { useState } from "react";
 
 /**
  *
@@ -20,8 +21,8 @@ function App({ strPortalDivId }) {
   /* className={(isActive)=>{return ""}} */
 
   const arrOptions = [
-    { title: "Google", to: "https://www.google.com" },
-    { title: "Amazon", to: "https://www.amazon.com" },
+    { title: "Google", to: "/expenses" },
+    { title: "Amazon", to: "/invoices" },
   ];
 
   return (

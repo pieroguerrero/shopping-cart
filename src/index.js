@@ -11,6 +11,7 @@ root.render(
       <Route path="/" element={<App strPortalDivId="div-portal" />}>
         <Route index element={<>Landing Page</>} />
         <Route path="expenses" element={<>Expenses</>} />
+        <Route path="invoices" element={<>Invoices</>} />
       </Route>
     </Routes>
   </BrowserRouter>

@@ -6,7 +6,8 @@ import ReactDOM from "react-dom";
  * children:any,
  * strPortalDivId:string,
  * strMaxWidth:string,
- * onClosePopUp:()=>void}} param0
+ * onClosePopUp:()=>void,
+ * strTitle:string}} param0
  * @returns
  */
 const SidePopUp = ({
@@ -15,9 +16,11 @@ const SidePopUp = ({
   strPortalDivId,
   strMaxWidth = "fit-content",
   onClosePopUp,
+  strTitle,
 }) => {
   return ReactDOM.createPortal(
     <div
+      data-testid="div-sidepopup"
       className={
         " absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
         (side === "left" ? "justify-start" : "justify-end")
@@ -30,6 +33,17 @@ const SidePopUp = ({
         style={{ maxWidth: strMaxWidth }}
       >
         <div className="px-4 pt-5 pb-6 flex  ">
+          {(() => {
+            if (strTitle && strTitle.length > 0) {
+              return (
+                <h2 className="flex-1 text-lg font-medium text-gray-900">
+                  {strTitle}
+                </h2>
+              );
+            }
+            return null;
+          })()}
+
           {/* Close button */}
           <button
             onClick={onClosePopUp}
