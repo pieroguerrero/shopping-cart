@@ -16,8 +16,8 @@ const getGender = (strCategory) => {
   return "";
 };
 
-const adapProduct = (objResponse) => {
-  if (objResponse) {
+const adaptProduct = (objResponse) => {
+  try {
     return createProduct(
       objResponse.id.toString(),
       getGender(objResponse.category),
@@ -27,7 +27,9 @@ const adapProduct = (objResponse) => {
       objResponse.image,
       objResponse.title
     );
-  } else return null;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export { adapProduct };
+export { adaptProduct };
