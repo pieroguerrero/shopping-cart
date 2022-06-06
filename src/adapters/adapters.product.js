@@ -2,6 +2,11 @@ import { createProduct } from "../models";
 
 /**
  *
+ * @module Adapter_Product
+ */
+
+/**
+ *
  * @param {string} strCategory
  */
 const getGender = (strCategory) => {
@@ -16,6 +21,11 @@ const getGender = (strCategory) => {
   return "";
 };
 
+/**
+ *
+ * @param {*} objResponse
+ * @returns
+ */
 const adaptProduct = (objResponse) => {
   try {
     return createProduct(

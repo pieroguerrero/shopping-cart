@@ -1,5 +1,10 @@
 /**
  *
+ * @module Factory_Product
+ */
+
+/**
+ *
  * @param {string} strId
  * @param {string} strGender
  * @param {string} strCategoryId
@@ -7,7 +12,7 @@
  * @param {number} fltPrice
  * @param {string} strImagePath
  * @param {string} strTitle
- * @returns
+ * @returns {Object}
  */
 const createProduct = (
   strId,

@@ -1,15 +1,20 @@
 import { SidePopUp } from "../SidePopUp";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+/**
+ *
+ * @module ComponentUtil_NavBar
+ */
+
 /**
  *
  * @param {string} strPortalDivId
- * @param {()=>void} closeSideMenu
- * @param {{
- *    title: string;
- *    to: string;
- * }[]} arrOptions
- * @param {(strPath: string)=>void} navigateTo
+ * @param {function():void} closeSideMenu
+ * @param {Object[]} arrOptions
+ * @param {string} arrOptions.title
+ * @param {string} arrOptions.to
+ * @param {function(string):void} navigateTo
  * @param {any} location
+ * @returns {JSX.Element}
  *
  */
 const getSideMenu = (
@@ -39,14 +44,13 @@ const getSideMenu = (
 
 /**
  *
- * @param {{
- *    title: string;
- *    to: string;
- * }[]} arrOptions
- * @param {(strPath: string)=>void} navigateTo
+ * @param {Object[]} arrOptions
+ * @param {string} arrOptions.title
+ * @param {string} arrOptions.to
+ * @param {function(string):void} navigateTo
  * @param {string} currentLocationPath
- * @param {()=>void} closeSideMenu
- * @returns
+ * @param {function():void} closeSideMenu
+ * @returns {JSX.Element}
  */
 const getPopUpContent = (
   arrOptions,
@@ -80,10 +84,10 @@ const getPopUpContent = (
 
 /**
  *
- * @param {{
- *    title: string;
- *    to: string;
- * }[]} arrOptions
+ * @param {Object[]} arrOptions
+ * @param {string} arrOptions.title
+ * @param {string} arrOptions.to
+ * @returns {JSX.Element[]}
  */
 const getMainBarOptions = (arrOptions) => {
   return arrOptions.map((objOption, index) => {

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ShoppingCart } from "../ShoppingCart";
 import { getSideMenu, getMainBarOptions } from "./NavBar.util";
 
 /**
  *
- * @param {{arrOptions: {
- *    title: string;
- *    to: string;
- * }[], strPortalDivId:string}} param0
- * @returns
+ * Main page navigation horizontal bar
+ * @param {Object} props
+ * @param {string} props.strPortalDivId
+ * @param {Object[]} props.arrOptions
+ * @param {string} props.arrOptions.title
+ * @param {string} props.arrOptions.to
+ * @returns {JSX.Element}
  */
 const NavBar = ({ arrOptions, strPortalDivId }) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -32,13 +34,13 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
   };
 
   /**
-   *
    * @param {string} strPath
+   * @returns {void}
    */
-  const onSideMenuNavigation = (strPath) => {
+  function onSideMenuNavigation(strPath) {
     closeSideMenu();
     navigate(strPath);
-  };
+  }
 
   const getSidePopUp = () => {
     if (isSideMenuOpen) {

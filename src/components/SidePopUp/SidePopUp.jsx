@@ -2,13 +2,14 @@ import ReactDOM from "react-dom";
 
 /**
  *
- * @param {{ side:string,
- * children:any,
- * strPortalDivId:string,
- * strMaxWidth:string,
- * onClosePopUp:()=>void,
- * strTitle:string}} param0
- * @returns
+ * @param {Object} props
+ * @param {string} props.side
+ * @param {JSX.Element} props.children
+ * @param {string} props.strPortalDivId
+ * @param {string} props.strMaxWidth
+ * @param {function():void} props.onClosePopUp
+ * @param {string} props.strTitle
+ * @returns {JSX.Element}
  */
 const SidePopUp = ({
   side = "left",

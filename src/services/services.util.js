@@ -1,9 +1,14 @@
 /**
  *
+ * @module Service_Util
+ */
+
+/**
+ *
  * @param {string} strBaseURL
  * @param {object} objURLParameters
  * @param {object} objRequestInit
- * @returns
+ * @returns {Promise<object>}
  */
 const callGetWithURLParams = async (
   strBaseURL,
@@ -33,6 +38,12 @@ const callGetWithURLParams = async (
   return result;
 };
 
+/**
+ *
+ * @param {string} strURL
+ * @param {object} objRequestInit
+ * @returns {Promise<Object>}
+ */
 const callGet = async (strURL, objRequestInit) => {
   const response = await fetch(strURL, objRequestInit);
 
@@ -41,6 +52,9 @@ const callGet = async (strURL, objRequestInit) => {
   return result;
 };
 
+/**
+ * Definition of the base URL
+ */
 const strBASE_URL = "https://fakestoreapi.com";
 
 export { callGet, callGetWithURLParams, strBASE_URL };

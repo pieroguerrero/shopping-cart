@@ -1,5 +1,12 @@
 import { callGet, strBASE_URL } from "./services.util";
 
+/**
+ * @module Service_Product
+ */
+
+/**
+ * RequestInit configuration options
+ */
 const objRequestInit = {
   mode: "cors",
 };

@@ -2,10 +2,15 @@ import { SidePopUp } from "../SidePopUp";
 
 /**
  *
- * @param {string} strPortalDivId
- * @param {()=>void} closeSideMenu
- * @param {(strPath: string)=>void} navigateTo
+ * @module ComponentUtil_ShoppingCart
+ */
+
+/**
  *
+ * @param {string} strPortalDivId
+ * @param {function():void} closeSideMenu
+ * @param {function(string):void} navigateTo
+ * @returns {JSX.Element}
  */
 const getCartMenu = (strPortalDivId, closeSideMenu, navigateTo) => {
   const testJSX = <div>Hola mundo!</div>;

@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { getCartMenu } from "./ShoppingCart.util";
 
+/**
+ *
+ * @param {Object} props
+ * @param {string} props.strPortalDivId
+ * @returns {JSX.Element}
+ */
 const ShoppingCart = ({ strPortalDivId }) => {
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(false);
+  const { addCartItem, getCartSubTotal, deleteCartItem, getCartItems } =
+    useContext(CartContext);
   const navigate = useNavigate();
+
+  console.log("getCartSubTotal", getCartSubTotal());
 
   const openCartMenu = () => {
     setIsCartMenuOpen(true);

@@ -1,4 +1,11 @@
-//Mockuping the categories, since there is no testing API service by the time this app was build.
+/**
+ *
+ * @module Service_Category
+ */
+
+/**
+ * Mockuping the categories, since there is no testing API service by the time this app was build.
+ */
 const objCategories = [
   {
     id: "electronics",
@@ -22,6 +29,18 @@ const objCategories = [
   },
 ];
 
+/**
+ *
+ * @typedef {Object} CategoryObject
+ * @property {string} id
+ * @property {string} displayName
+ * @property {string} value
+ */
+
+/**
+ *
+ * @returns {Promise<CategoryObject[]>}
+ */
 const getCategoryAll = () => {
   return Promise.resolve(objCategories);
 };

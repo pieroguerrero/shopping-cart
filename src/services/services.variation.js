@@ -1,4 +1,18 @@
-//Mockuping variations for products
+/**
+ * @module Service_Variation
+ */
+
+/**
+ *
+ * @typedef {Object} VariationObject
+ * @property {string} id
+ * @property {string} displayName
+ * @property {string[]} values
+ */
+
+/**
+ * Mockuping variations for products
+ */
 const objColors = {
   id: "color",
   displayName: "Color",
@@ -11,6 +25,11 @@ const objSizes = {
   values: ["xs", "s", "m", "l", "xl", "xxl"],
 };
 
+/**
+ *
+ * @param {string} strProductId
+ * @returns {Promise<VariationObject[]>}
+ */
 const getProductVariations = (strProductId) => {
   objColors.productId = strProductId;
   objSizes.productId = strProductId;

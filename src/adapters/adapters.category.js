@@ -1,5 +1,16 @@
 import { createCategory } from "../models/models.category";
 
+/**
+ *
+ * @module Adapter_Category
+ */
+
+/**
+ *
+ * @param {Object} objResponse
+ * @returns
+ */
+
 const adaptCategory = (objResponse) => {
   try {
     return createCategory(
