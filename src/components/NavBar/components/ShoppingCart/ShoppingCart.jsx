@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext";
-import { getCartMenu } from "./ShoppingCart.util";
+import { CartContext } from "./../../../../contexts/CartContext";
+import { ShoppingCartContent } from "./ShoppingCart.Content";
+import { getCartMenu, countItems } from "./ShoppingCart.util";
 
 /**
  *
@@ -48,12 +49,16 @@ const ShoppingCart = ({ strPortalDivId }) => {
           ></path>
         </svg>
         <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-          0
+          {countItems(getCartItems())}
         </span>
       </button>
-      {isCartMenuOpen
-        ? getCartMenu(strPortalDivId, closeCartMenu, navigate)
-        : null}
+      {isCartMenuOpen ? (
+        <ShoppingCartContent
+          strPortalDivId={strPortalDivId}
+          closeSideMenu={closeCartMenu}
+          navigateTo={navigate}
+        />
+      ) : null}
     </>
   );
 };

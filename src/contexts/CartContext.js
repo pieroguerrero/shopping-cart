@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 /**
- * @typedef {Object} CartContextObject
+ * @typedef {Object} CartContextValue
  * @property {function():number} getCartSubTotal
  * @property {function(import("../models/models.cart").CartItem):void} addCartItem
  * @property {function(string):boolean} deleteCartItem
@@ -9,7 +9,7 @@ import { createContext } from "react";
  */
 
 /**
- * @type {React.Context<CartContextObject>}
+ * @type {React.Context<CartContextValue>}
  */
 const CartContext = createContext(null);
 

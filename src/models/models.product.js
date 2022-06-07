@@ -5,6 +5,18 @@
 
 /**
  *
+ * @typedef {Object} Product
+ * @property {string} Product.strId
+ * @property {string} Product.strGender
+ * @property {string} Product.strCategoryId
+ * @property {string} Product.strDescription
+ * @property {number} Product.fltPrice
+ * @property {string} Product.strImagePath
+ * @property {string} Product.strTitle
+ */
+
+/**
+ *
  * @param {string} strId
  * @param {string} strGender
  * @param {string} strCategoryId
@@ -12,7 +24,7 @@
  * @param {number} fltPrice
  * @param {string} strImagePath
  * @param {string} strTitle
- * @returns {Object}
+ * @returns {Product}
  */
 const createProduct = (
   strId,

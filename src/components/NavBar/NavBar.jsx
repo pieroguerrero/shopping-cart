@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ShoppingCart } from "../ShoppingCart";
-import { getSideMenu, getMainBarOptions } from "./NavBar.util";
+import { Link } from "react-router-dom";
+import { ShoppingCart } from "./components/ShoppingCart";
+import { HamburgerMenu } from "./components/HambugerMenu";
+import { NavBarMenu } from "./components/NavBarMenu/NavBarMenu";
 
 /**
  *
@@ -14,47 +14,6 @@ import { getSideMenu, getMainBarOptions } from "./NavBar.util";
  * @returns {JSX.Element}
  */
 const NavBar = ({ arrOptions, strPortalDivId }) => {
-  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-
-  const [mainLinkOptions, setMainLinkOptions] = useState(null);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    setMainLinkOptions(getMainBarOptions(arrOptions));
-    console.log("NavBar.useEffect called!");
-  }, [arrOptions]);
-
-  const openSideMenu = () => {
-    setIsSideMenuOpen(true);
-  };
-
-  const closeSideMenu = () => {
-    setIsSideMenuOpen(false);
-  };
-
-  /**
-   * @param {string} strPath
-   * @returns {void}
-   */
-  function onSideMenuNavigation(strPath) {
-    closeSideMenu();
-    navigate(strPath);
-  }
-
-  const getSidePopUp = () => {
-    if (isSideMenuOpen) {
-      return getSideMenu(
-        strPortalDivId,
-        closeSideMenu,
-        arrOptions,
-        onSideMenuNavigation,
-        location
-      );
-    }
-    return null;
-  };
-
   return (
     <>
       <header className="relative bg-white">
@@ -69,28 +28,10 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
           <div className="border-b border-gray-200">
             <div className="h-16 flex items-center">
               {/* Hamburguer Menu */}
-              <button
-                type="button"
-                onClick={openSideMenu}
-                className="bg-white p-2 rounded-md text-gray-400 lg:hidden"
-              >
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </button>
-
+              <HamburgerMenu
+                strPortalDivId={strPortalDivId}
+                arrOptions={arrOptions}
+              />
               {/* <!-- Logo --> */}
               <div className="ml-4 flex lg:ml-0">
                 <Link to={"/"}>
@@ -105,7 +46,7 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
               {/* <!-- Dynamic options --> */}
 
               <div className="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div className="h-full flex space-x-8">{mainLinkOptions}</div>
+                <NavBarMenu arrOptions={arrOptions} />
               </div>
 
               {/* Static Options */}
@@ -159,7 +100,6 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
           </div>
         </nav>
       </header>
-      {getSidePopUp()}
     </>
   );
 };

@@ -69,16 +69,20 @@ const SidePopUp = ({
             </svg>
           </button>
         </div>
-        <div className=" flex flex-col px-4  py-4 ">{children}</div>
+        <div className="flex flex-col justify-between h-full">
+          <div className=" flex flex-col px-4  py-4 ">{children}</div>
 
-        <div className="border-t border-gray-200 py-6 px-4 space-y-6">
-          <div>
-            <p className="-m-2 p-2 block font-medium text-gray-900">Sign in</p>
-          </div>
-          <div>
-            <p className="-m-2 p-2 block font-medium text-gray-900">
-              Create account
-            </p>
+          <div className="border-t border-gray-200 py-6 px-4 space-y-6">
+            <div>
+              <p className="-m-2 p-2 block font-medium text-gray-900">
+                Sign in
+              </p>
+            </div>
+            <div>
+              <p className="-m-2 p-2 block font-medium text-gray-900">
+                Create account
+              </p>
+            </div>
           </div>
         </div>
       </div>

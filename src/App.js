@@ -4,7 +4,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { useState } from "react";
 import { CartContext } from "./contexts/CartContext";
-import { createCart, createCartItem } from "./models/models.cart";
+import { createCart } from "./models/models.cart";
 import uniqid from "uniqid";
 
 /**
@@ -88,8 +88,12 @@ function App({ strPortalDivId }) {
     <CartContext.Provider
       value={{ addCartItem, getCartSubTotal, deleteCartItem, getCartItems }}
     >
-      <NavBar strPortalDivId={strPortalDivId} arrOptions={arrOptions} />
-      <Outlet />
+      <div className="flex flex-col h-screen">
+        <NavBar strPortalDivId={strPortalDivId} arrOptions={arrOptions} />
+        <div className="flex-1">
+          <Outlet />
+        </div>
+      </div>
     </CartContext.Provider>
   );
 }
