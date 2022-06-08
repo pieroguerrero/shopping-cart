@@ -7,26 +7,20 @@
  *
  * @param {number} index
  * @param {string} strValue
- * @param {string} strColorCodeHEX
- * @param {string} strDisplayName
+ * @param {string} strName
  * @param {function(string,string):void} handleClick
  * @returns {JSX.Element}
  */
-const getRadioButton = (
-  index,
-  strValue,
-  strColorCodeHEX,
-  strDisplayName,
-  handleClick
-) => {
+const getRadioButton = (index, strValue, strName, handleClick) => {
   return (
     <label
       key={index}
-      title={strDisplayName}
+      title={strValue}
       className="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
     >
       <input
-        onClick={handleClick.bind(null, strValue, strDisplayName)}
+        required
+        onClick={handleClick.bind(null, strValue, strName)}
         type="radio"
         name="color-choice"
         value={strValue}
@@ -35,8 +29,8 @@ const getRadioButton = (
       />
       <span
         aria-hidden="true"
-        className="h-9 w-9 border border-black border-opacity-20 rounded-full peer-checked:border-white peer-checked:border-opacity-100 peer-checked:ring-gray-400 peer-checked:ring-2 "
-        style={{ backgroundColor: strColorCodeHEX }}
+        className="h-9 w-9 border border-black border-opacity-20 rounded-full peer-checked:border-white peer-checked:border-opacity-100 peer-checked:ring-color_primary peer-checked:ring-2 "
+        style={{ backgroundColor: strName }}
       ></span>
     </label>
   );

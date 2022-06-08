@@ -5,24 +5,35 @@
 /**
  *
  * @typedef {Object} VariationObject
- * @property {string} id
- * @property {string} displayName
- * @property {string[]} values
+ * @property {string} name
+ * @property {Object[]} entities
+ * @property {string} entities.value
+ * @property {string} entities.name
  */
 
 /**
  * Mockuping variations for products
  */
 const objColors = {
-  id: "color",
-  displayName: "Color",
-  values: ["#bbbbbb", "#0474fa", "#f7e940", "ffffff"],
+  name: "Color",
+  entities: [
+    { value: "color 1", name: "#bbbbbb" },
+    { value: "color 2", name: "#0474fa" },
+    { value: "color 3", name: "#f7e940" },
+    { value: "color 4", name: "#ffffff" },
+  ],
 };
 
 const objSizes = {
-  id: "size",
-  displayName: "Size",
-  values: ["xs", "s", "m", "l", "xl", "xxl"],
+  name: "Size",
+  entities: [
+    { value: "xs", name: "XS" },
+    { value: "s", name: "S" },
+    { value: "m", name: "M" },
+    { value: "l", name: "L" },
+    { value: "xl", name: "XL" },
+    { value: "2xl", name: "2XL" },
+  ],
 };
 
 /**

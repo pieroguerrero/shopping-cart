@@ -5,15 +5,25 @@
 
 /**
  *
- * @param {string} strVariationId
- * @param {string} strProductId
- * @param {string} strName
- * @param {string[]} arrValues
- * @returns {Object}
+ * @typedef {Object} Variation
+ * @property {string} strVariationId
+ * @property {string} strName
+ * @property {Object[]} arrValues
+ * @property {string} arrValues.name
+ * @property {string} arrValues.value
  */
-const createVariation = (strVariationId, strProductId, strName, arrValues) => ({
+
+/**
+ *
+ * @param {string} strVariationId
+ * @param {string} strName
+ * @param {object[]} arrValues
+ * @param {string} arrValues.name
+ * @param {string} arrValues.value
+ * @returns {Variation}
+ */
+const createVariation = (strVariationId, strName, arrValues) => ({
   strVariationId,
-  strProductId,
   strName,
   arrValues,
 });

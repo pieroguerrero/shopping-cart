@@ -1,3 +1,5 @@
+import { Variation } from "./models.variation";
+
 /**
  *
  * @module Factory_Product
@@ -13,6 +15,7 @@
  * @property {number} Product.fltPrice
  * @property {string} Product.strImagePath
  * @property {string} Product.strTitle
+ * @property {Variation[]} Product.arrVariations
  */
 
 /**
@@ -24,6 +27,7 @@
  * @param {number} fltPrice
  * @param {string} strImagePath
  * @param {string} strTitle
+ * @param {Variation[]} arrVariations
  * @returns {Product}
  */
 const createProduct = (
@@ -33,8 +37,8 @@ const createProduct = (
   strDescription,
   fltPrice,
   strImagePath,
-  strTitle
-  //,arrVariations
+  strTitle,
+  arrVariations
 ) => ({
   strId,
   strGender,
@@ -43,7 +47,7 @@ const createProduct = (
   fltPrice,
   strImagePath,
   strTitle,
-  //,arrVariations,
+  arrVariations,
 });
 
 export { createProduct };

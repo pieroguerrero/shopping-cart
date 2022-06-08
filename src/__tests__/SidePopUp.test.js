@@ -18,7 +18,7 @@ describe("SidePopUp component", () => {
         children={children}
         strPortalDivId="div-container-popup"
         strMaxWidth="200px"
-        onClosePopUp={() => {}}
+        onClosePopUp={jest.fn()}
         strTitle="PopUp Title"
       />
     );
