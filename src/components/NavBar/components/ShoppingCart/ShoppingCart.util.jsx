@@ -1,5 +1,6 @@
 import { SidePopUp } from "./../../../SidePopUp";
 import { ShoppingCartItem } from "./ShoppingCartItem";
+import { CartItem } from "../../../../models/models.cart";
 
 /**
  *
@@ -42,9 +43,9 @@ const countItems = (arrCartItems) => {
 
 /**
  *
- * @param {import("../../../../models/models.cart").CartItem[]} arrCartItems
+ * @param {CartItem[]} arrCartItems
  * @param {number} dblCartSubTotal
- * @param {function(import("../../../../models/models.cart").CartItem):void} addCartItem
+ * @param {function(CartItem):void} addCartItem
  * @param {function(string):boolean} deleteCartItem
  */
 const getCartContent = (

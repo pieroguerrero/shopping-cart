@@ -4,4 +4,6 @@ const ProductListPaths = {
   SEARCH: "search",
 };
 
-export { ProductListPaths };
+const PortalDivId = "div-portal";
+
+export { ProductListPaths, PortalDivId };

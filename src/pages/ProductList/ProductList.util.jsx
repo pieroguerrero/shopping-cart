@@ -47,6 +47,4 @@ const getListTitle = (strBranch, searchParams) => {
   );
 };
 
-const getListItems = () => {};
-
 export { getListTitle };

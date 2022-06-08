@@ -1,4 +1,5 @@
 import { createProduct } from "../models";
+import { Product } from "../models";
 
 /**
  *
@@ -8,6 +9,7 @@ import { createProduct } from "../models";
 /**
  *
  * @param {string} strCategory
+ * @returns {("f"|"m"|"")}
  */
 const getGender = (strCategory) => {
   if (strCategory.toLowerCase().trim() === "women's clothing") {
@@ -23,8 +25,8 @@ const getGender = (strCategory) => {
 
 /**
  *
- * @param {*} objResponse
- * @returns
+ * @param {object} objResponse
+ * @returns {Product}
  */
 const adaptProduct = (objResponse) => {
   try {

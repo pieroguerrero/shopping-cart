@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "./../../../../contexts/CartContext";
 import { ShoppingCartContent } from "./ShoppingCart.Content";
-import { getCartMenu, countItems } from "./ShoppingCart.util";
+import { countItems } from "./ShoppingCart.util";
 
 /**
  *
