@@ -1,4 +1,4 @@
-import { callGet, strBASE_URL } from "./services.util";
+import { callGet, strBASE_URL, callFetchRetry } from "./services.util";
 
 /**
  * @module Service_Product
@@ -17,9 +17,9 @@ const objRequestInit = {
  * @returns {Promise<Object>}
  */
 const getProductById = (strId) => {
-  const strURL = strBASE_URL + "/products/" + strId;
+  const strURL = strBASE_URL + "/products/" + strId.trim();
 
-  return callGet(strURL, objRequestInit);
+  return callFetchRetry(strURL, objRequestInit, 1);
 };
 
 /**
@@ -28,9 +28,9 @@ const getProductById = (strId) => {
  * @returns {Promise<Object[]>}
  */
 const getProductsByCategory = (strCategoryName) => {
-  const strURL = strBASE_URL + "/category/" + strCategoryName;
+  const strURL = strBASE_URL + "/category/" + strCategoryName.trim();
 
-  return callGet(strURL, objRequestInit);
+  return callFetchRetry(strURL, objRequestInit, 1);
 };
 
 /**
@@ -40,7 +40,7 @@ const getProductsByCategory = (strCategoryName) => {
 const getProductsAll = () => {
   const strURL = strBASE_URL + "/products";
 
-  return callGet(strURL, objRequestInit);
+  return callFetchRetry(strURL, objRequestInit, 1);
 };
 
 export { getProductById, getProductsByCategory, getProductsAll };

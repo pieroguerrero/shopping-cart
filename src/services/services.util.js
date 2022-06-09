@@ -38,6 +38,8 @@ const callGetWithURLParams = async (
   return result;
 };
 
+const get = async () => {};
+
 /**
  *
  * @param {string} strURL
@@ -45,11 +47,30 @@ const callGetWithURLParams = async (
  * @returns {Promise<Object>}
  */
 const callGet = async (strURL, objRequestInit) => {
-  const response = await fetch(strURL, objRequestInit);
+  try {
+    const response = await fetch(strURL, objRequestInit);
 
-  const result = await response.json();
+    const result = await response.json();
 
-  return result;
+    return result;
+  } catch (error) {}
+};
+
+const callFetchRetry = async (url, options = {}, retries) => {
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    }
+    if (retries > 0) {
+      console.error("callFetchRetry has retried");
+      return callFetchRetry(url, options, retries - 1);
+    }
+    throw new Error(response.statusText);
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 /**
@@ -57,4 +78,4 @@ const callGet = async (strURL, objRequestInit) => {
  */
 const strBASE_URL = "https://fakestoreapi.com";
 
-export { callGet, callGetWithURLParams, strBASE_URL };
+export { callGet, callGetWithURLParams, strBASE_URL, callFetchRetry };

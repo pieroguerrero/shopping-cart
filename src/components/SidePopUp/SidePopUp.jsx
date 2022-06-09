@@ -39,21 +39,21 @@ const SidePopUp = ({
 
     setTimeout(() => {
       onClosePopUp();
-    }, 750);
+    }, 700);
   };
 
   return ReactDOM.createPortal(
     <div
       data-testid="div-sidepopup"
       className={
-        "absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
+        "overflow-hidden absolute top-0 left-0 bottom-0 right-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
         (side === "left" ? "justify-start" : "justify-end")
       }
     >
       <div
         ref={redDivContainer}
         className={
-          "relative w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
+          "relative overflow-x-hidden w-full h-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
           (side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]")
         }
         //style={{ maxWidth: strMaxWidth }}
