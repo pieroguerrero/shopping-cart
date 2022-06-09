@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
 /**
@@ -19,21 +20,45 @@ const SidePopUp = ({
   onClosePopUp,
   strTitle,
 }) => {
+  const redDivContainer = useRef(null);
+  useEffect(() => {
+    setTimeout(() => {
+      redDivContainer.current.classList.remove(
+        side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]"
+      );
+      redDivContainer.current.classList.add("translate-x-0");
+    }, 1);
+  }, [side]);
+
+  const onClose = () => {
+    redDivContainer.current.classList.remove("translate-x-0");
+
+    redDivContainer.current.classList.add(
+      side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]"
+    );
+
+    setTimeout(() => {
+      onClosePopUp();
+    }, 750);
+  };
+
   return ReactDOM.createPortal(
     <div
       data-testid="div-sidepopup"
       className={
-        " absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
+        "absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
         (side === "left" ? "justify-start" : "justify-end")
       }
     >
       <div
+        ref={redDivContainer}
         className={
-          "relative w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
+          "relative w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
+          (side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]")
         }
-        style={{ maxWidth: strMaxWidth }}
+        //style={{ maxWidth: strMaxWidth }}
       >
-        <div className="px-4 pt-5 pb-6 flex  ">
+        <div className="px-4 sm:px-6 pt-5 pb-6 flex  ">
           {(() => {
             if (strTitle && strTitle.length > 0) {
               return (
@@ -47,7 +72,7 @@ const SidePopUp = ({
 
           {/* Close button */}
           <button
-            onClick={onClosePopUp}
+            onClick={onClose}
             type="button"
             className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
           >
@@ -70,7 +95,7 @@ const SidePopUp = ({
           </button>
         </div>
         <div className="flex flex-col justify-between h-full">
-          <div className=" flex flex-col px-4  py-4 ">{children}</div>
+          <div className=" flex flex-col py-4 ">{children}</div>
 
           <div className="border-t border-gray-200 py-6 px-4 space-y-6">
             <div>

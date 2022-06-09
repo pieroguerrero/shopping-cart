@@ -1,4 +1,6 @@
+import { useContext, useRef } from "react";
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { Product } from "../../models";
 import { createCartItem } from "../../models";
 import { ColorPicker } from "./components/ColorPicker";
@@ -14,29 +16,12 @@ const ProductPage = () => {
    * @type Product
    */
   const objProduct = useLocation().state;
+  console.log("ProductPage.objProduct:", objProduct);
+  const { addCartItem } = useContext(CartContext);
+  const refForm = useRef(null);
 
-  //TODO: Add the infomation about the colors in the adapter, so the color has the values. There is aservice for that
-  const objColorOptions = [
-    {
-      value: "White",
-      name: "#ffffff",
-    },
-    {
-      value: "Black",
-      name: "#000000",
-    },
-    {
-      value: "Gray",
-      name: "#808080",
-    },
-    {
-      value: "Wine Red",
-      name: "#b11226",
-    },
-  ];
-
-  let strChoosenColor = "";
-  let strChoosenSize = "";
+  let strChoosenColor;
+  let strChoosenSize;
 
   /**
    *
@@ -55,7 +40,6 @@ const ProductPage = () => {
    * @returns {void}
    */
   const handleRadioButtonSizeClick = (strValue, strName) => {
-    console.log("handleRadioButtonSizeClick", strChoosenSize);
     strChoosenSize = strValue;
   };
 
@@ -71,16 +55,52 @@ const ProductPage = () => {
     return Math.floor(Math.random() * (max - min) + min);
   };
 
-  console.log("ProductPage.objProduct:", objProduct);
+  const addToBag = (e) => {
+    let strCarItemId = objProduct.strId;
+    let arrVariationValues = [];
+
+    if (objColorVariation) {
+      if (!strChoosenColor) {
+        return;
+      } else {
+        strCarItemId += "-" + strChoosenColor;
+        arrVariationValues.push(strChoosenColor);
+      }
+    }
+
+    if (objSizeVariation) {
+      if (!strChoosenSize) {
+        return;
+      } else {
+        strCarItemId += "-" + strChoosenSize;
+        arrVariationValues.push(strChoosenSize);
+      }
+    }
+
+    const objCartItem = createCartItem(
+      objProduct.strTitle,
+      strCarItemId,
+      objProduct.strImagePath,
+      1,
+      objProduct.fltPrice,
+      arrVariationValues
+    );
+
+    addCartItem(objCartItem);
+
+    refForm.current.reset();
+    e.preventDefault();
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
       <div>
         <div className="pt-10 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16">
-          <div className="sm:rounded-lg sm:overflow-hidden">
+          <div className="sm:rounded-lg sm:overflow-hidden flex justify-center">
             <img
               src={objProduct.strImagePath}
               alt={objProduct.strTitle}
-              className="w-full h-full object-center object-cover"
+              className=" w-[80%] h-auto sm:w-full sm:h-full object-center object-cover"
             />
           </div>
         </div>
@@ -106,7 +126,7 @@ const ProductPage = () => {
             />
           </div>
           {/* Variations */}
-          <form className="mt-10">
+          <form ref={refForm} className="mt-10">
             {/* <!-- Colors --> */}
             {objColorVariation ? (
               <div>
@@ -131,6 +151,7 @@ const ProductPage = () => {
 
             <button
               type="submit"
+              onClick={addToBag}
               className="mt-10 w-full bg-color_primary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg--color_primary_dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Add to bag

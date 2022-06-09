@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { useState } from "react";
 import { CartContext } from "./contexts/CartContext";
 import { createCart } from "./models/models.cart";
+import { CartItem } from "./models";
 import uniqid from "uniqid";
 
 /**
@@ -32,12 +33,37 @@ function App({ strPortalDivId }) {
 
   /**
    *
-   * @param {import("./models/models.cart").CartItem} objItem
+   * @param {CartItem[]} arrCartItems
+   * @param {CartItem} objItem
+   * @returns {CartItem[]}
+   */
+  const includeItemInCartArray = (arrCartItems, objItem) => {
+    const index = arrCartItems.findIndex(
+      (cartItem) => cartItem.strId === objItem.strId
+    );
+
+    if (index === -1) {
+      return [...arrCartItems, objItem];
+    } else {
+      return arrCartItems.map((cartItem) => {
+        if (cartItem.strId === objItem.strId) {
+          objItem.intQuatity += cartItem.intQuatity;
+          return objItem;
+        }
+
+        return cartItem;
+      });
+    }
+  };
+
+  /**
+   *
+   * @param {CartItem} objItem
    * @returns {void}
    */
   const addCartItem = (objItem) => {
     const newCart = { ...cart };
-    const newCartItems = [...cart.arrItems, objItem];
+    const newCartItems = includeItemInCartArray(cart.arrItems, objItem);
     newCart.arrItems = newCartItems;
 
     newCart.dblSubTotal = newCartItems.reduce((prev, current) => {
@@ -45,6 +71,7 @@ function App({ strPortalDivId }) {
       return prev;
     }, 0);
 
+    console.log("App.addCartItem:", objItem);
     setCart(newCart);
   };
 
@@ -67,7 +94,14 @@ function App({ strPortalDivId }) {
     );
 
     if (newCartItems.length < cart.arrItems.length) {
-      const newCart = { ...cart };
+      const newCart = {
+        ...cart,
+        dblSubTotal: newCartItems.reduce(
+          (subTotal, carItem) =>
+            (subTotal += carItem.dblUnitPrice * carItem.intQuatity),
+          0
+        ),
+      };
       newCart.arrItems = newCartItems;
       setCart(newCart);
       return true;

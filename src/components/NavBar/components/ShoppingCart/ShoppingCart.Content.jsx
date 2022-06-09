@@ -21,13 +21,14 @@ const ShoppingCartContent = ({ strPortalDivId, closeSideMenu, navigateTo }) => {
       strPortalDivId={strPortalDivId}
       strMaxWidth={"300px"}
       onClosePopUp={closeSideMenu}
-      strTitle="Shopping Cart"
+      strTitle="Shopping Bag"
     >
       {getCartContent(
         getCartItems(),
         getCartSubTotal(),
         addCartItem,
-        deleteCartItem
+        deleteCartItem,
+        closeSideMenu
       )}
     </SidePopUp>
   );

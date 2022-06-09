@@ -12,11 +12,8 @@ import { countItems } from "./ShoppingCart.util";
  */
 const ShoppingCart = ({ strPortalDivId }) => {
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(false);
-  const { addCartItem, getCartSubTotal, deleteCartItem, getCartItems } =
-    useContext(CartContext);
+  const { getCartItems } = useContext(CartContext);
   const navigate = useNavigate();
-
-  console.log("getCartSubTotal", getCartSubTotal());
 
   const openCartMenu = () => {
     setIsCartMenuOpen(true);
