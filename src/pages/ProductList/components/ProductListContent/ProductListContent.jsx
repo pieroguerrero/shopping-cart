@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Location, useLocation } from "react-router-dom";
 import { LoadingShade } from "../../../../components/LoadingShade/LoadingShade";
 import { CartContext } from "./../../../../contexts/";
 import { getProducts, paraseProductList } from "./ProductListContent.util";
@@ -13,18 +12,23 @@ import { getProducts, paraseProductList } from "./ProductListContent.util";
  */
 const ProductListContent = ({ strBranch, searchParams }) => {
   const [arrProductList, setArrProductList] = useState(null);
+  const [stateSearchParams, setStateSearchParams] = useState(searchParams);
 
   useEffect(() => {
-    console.log("ProductListContent.useEffect executed!");
     getProducts(strBranch, searchParams).then(function (response) {
       setArrProductList(paraseProductList(response));
+      setStateSearchParams(searchParams);
     });
   }, [strBranch, searchParams]);
+
+  if (arrProductList === null) {
+    console.log("arrProductList is NULL");
+  }
 
   return (
     <>
       {(() => {
-        if (arrProductList === null) {
+        if (arrProductList === null || stateSearchParams !== searchParams) {
           return <LoadingShade />;
         }
 

@@ -1,5 +1,9 @@
 import { adaptProduct } from "../../../../adapters";
-import { getProductsAll, getProductsByCategory } from "../../../../services";
+import {
+  getProductsAll,
+  getProductsByCategory,
+  getProductsMostViwed,
+} from "../../../../services";
 import { ProductListPaths } from "../../../../utilities/constants";
 import { ProductListItem } from "./../ProductListItem";
 
@@ -16,19 +20,19 @@ import { ProductListItem } from "./../ProductListItem";
  */
 const getProducts = (strBranch, searchParams) => {
   if (strBranch.toLowerCase() === ProductListPaths.MOST_VIWED) {
-    return getProductsAll();
+    return getProductsMostViwed();
   }
 
   if (strBranch.toLowerCase() === ProductListPaths.CATEGORY) {
-    console.log(
-      "getProducts - ProductListPaths.CATEGORY.Parameter: ",
-      searchParams.get("value")
-    );
     return getProductsByCategory(searchParams.get("value"));
   }
 
   if (strBranch.toLowerCase() === ProductListPaths.SEARCH) {
     return Promise.resolve(["no value"]);
+  }
+
+  if (strBranch.toLowerCase() === ProductListPaths.ALL) {
+    return getProductsAll();
   }
 };
 

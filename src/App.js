@@ -1,11 +1,12 @@
 import "./App.css";
-import { getProductById } from "./services";
-import { Outlet, NavLink } from "react-router-dom";
+import { getCategoryAll } from "./services";
+import { Outlet } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartContext } from "./contexts/CartContext";
 import { createCart } from "./models/models.cart";
 import { CartItem } from "./models";
+import { adaptCategory } from "./adapters/";
 import uniqid from "uniqid";
 
 /**
@@ -14,22 +15,21 @@ import uniqid from "uniqid";
  * @returns
  */
 function App({ strPortalDivId }) {
-  // getProductById("1")
-  //   .then(function (response) {
-  //     console.log("Response!!", response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log("ERROR!!", error);
-  //   });
-
-  /* className={(isActive)=>{return ""}} */
-
-  const arrOptions = [
-    { title: "Google", to: "/expenses" },
-    { title: "Amazon", to: "/invoices" },
-  ];
-
   const [cart, setCart] = useState(createCart(uniqid(), new Date(), 0, 0, []));
+  const [arrOptions, setArrOptions] = useState([]);
+
+  useEffect(() => {
+    getCategoryAll().then((response) => {
+      const arrOptionsNew = response.map((strCateogryRaw) => {
+        const objCategory = adaptCategory(strCateogryRaw);
+        return {
+          title: objCategory.strName,
+          uriParameter: objCategory.strName.trim(),
+        };
+      });
+      setArrOptions(arrOptionsNew);
+    });
+  }, []);
 
   /**
    *
@@ -71,7 +71,6 @@ function App({ strPortalDivId }) {
       return prev;
     }, 0);
 
-    console.log("App.addCartItem:", objItem);
     setCart(newCart);
   };
 

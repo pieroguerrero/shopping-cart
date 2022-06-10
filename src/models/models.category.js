@@ -4,16 +4,19 @@
  */
 
 /**
- * Returns the basic structure of a Category
- * @param {string} strId
- * @param {string} strDisplayName
- * @param {string} strURLValue
- * @returns {{strId:string,strDisplayName:string,strURLValue:string }}
+ *
+ * @typedef {Object} Category
+ * @property {string} strName
+ * @returns
  */
-const createCategory = (strId, strDisplayName, strURLValue) => ({
-  strId,
-  strDisplayName,
-  strURLValue,
+
+/**
+ * Returns the basic structure of a Category
+ * @param {string} strName
+ * @returns {Category}
+ */
+const createCategory = (strName) => ({
+  strName: strName,
 });
 
 export { createCategory };

@@ -1,4 +1,5 @@
 import { createCategory } from "../models/models.category";
+import { Category } from "../models";
 
 /**
  *
@@ -7,17 +8,13 @@ import { createCategory } from "../models/models.category";
 
 /**
  *
- * @param {Object} objResponse
- * @returns
+ * @param {string} strResponse
+ * @returns {Category}
  */
 
-const adaptCategory = (objResponse) => {
+const adaptCategory = (strResponse) => {
   try {
-    return createCategory(
-      objResponse.id,
-      objResponse.displayName,
-      objResponse.value
-    );
+    return createCategory(strResponse);
   } catch (error) {
     throw error;
   }

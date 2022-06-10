@@ -13,7 +13,7 @@ import ReactDOM from "react-dom";
  * @returns {JSX.Element}
  */
 const SidePopUp = ({
-  side = "left",
+  side,
   children,
   strPortalDivId,
   strMaxWidth = "fit-content",
@@ -28,6 +28,11 @@ const SidePopUp = ({
       );
       redDivContainer.current.classList.add("translate-x-0");
     }, 1);
+    // redDivContainer.current.scrollIntoView({
+    //   inline: "center",
+    //   block: "center",
+    //   behavior: "smooth",
+    // });
   }, [side]);
 
   const onClose = () => {
@@ -46,14 +51,14 @@ const SidePopUp = ({
     <div
       data-testid="div-sidepopup"
       className={
-        "overflow-hidden absolute top-0 left-0 bottom-0 right-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
+        "flex-1 overflow-hidden absolute top-0 left-0 bottom-0 right-0 w-full h-screen bg-gray-600 bg-opacity-50 z-50 flex " +
         (side === "left" ? "justify-start" : "justify-end")
       }
     >
       <div
         ref={redDivContainer}
         className={
-          "relative overflow-x-hidden w-full h-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
+          "relative overflow-x-hidden h-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
           (side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]")
         }
         //style={{ maxWidth: strMaxWidth }}

@@ -11,13 +11,17 @@ const ProductListItem = ({ objProduct }) => {
   return (
     <div className="group relative flex flex-col h-full">
       <div className="flex-1 flex items-center">
-        <div className="w-full flex items-center bg-white rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-auto">
+        <Link
+          to={"../product/" + objProduct.strId}
+          state={objProduct}
+          className="w-full flex items-center bg-white rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-auto"
+        >
           <img
             src={objProduct.strImagePath}
             alt={objProduct.strTitle}
             className="object-center"
           />
-        </div>
+        </Link>
       </div>
 
       <div className="mt-4 flex flex-col justify-between">

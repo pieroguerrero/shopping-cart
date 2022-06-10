@@ -1,4 +1,4 @@
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { ProductListContent } from "./components/ProductListContent";
 import { getListTitle } from "./ProductList.util";
 
@@ -8,7 +8,7 @@ import { getListTitle } from "./ProductList.util";
  */
 const ProductList = () => {
   const params = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   return (
     <main className="h-full bg-white overflow-hidden">
@@ -21,8 +21,6 @@ const ProductList = () => {
           />
         </div>
       </div>
-
-      {/* create a new component called ProductListContent, este component will call the API based on the parameters in the URL passed by its parent ProductList component. If tere are no records to show it will return the proper message */}
     </main>
   );
 };

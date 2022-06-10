@@ -3,43 +3,30 @@
  * @module "Util_HambugerMenu"
  */
 
+import { HamburgerMenuLink } from "./HamburgerMenu.Link";
+
 /**
  *
  * @param {Object[]} arrOptions
  * @param {string} arrOptions.title
- * @param {string} arrOptions.to
+ * @param {string} arrOptions.uriParameter
  * @param {function(string):void} navigateTo
- * @param {string} currentLocationPath
  * @param {function():void} closeSideMenu
  * @returns {JSX.Element}
  */
-const getPopUpContent = (
-  arrOptions,
-  navigateTo,
-  closeSideMenu,
-  currentLocationPath
-) => {
+const getPopUpContent = (arrOptions, navigateTo, closeSideMenu) => {
   return (
-    <div className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-6 px-4 sm:px-6 mr-8">
       {arrOptions.map((objOption, index) => (
-        <button
-          key={index}
-          type="button"
-          onClick={() => {
-            closeSideMenu();
-            navigateTo(objOption.to);
-          }}
-          className={
-            "whitespace-nowrap text-base font-medium text-left w-full border-r-4 text-color_primary" +
-            (currentLocationPath.includes(objOption.to)
-              ? " border-r-color_primary"
-              : " border-r-transparent")
-          }
-        >
-          {objOption.title}
-        </button>
+        <li key={index}>
+          <HamburgerMenuLink
+            objOption={objOption}
+            navigateTo={navigateTo}
+            closeSideMenu={closeSideMenu}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

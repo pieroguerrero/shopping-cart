@@ -21,7 +21,7 @@ const getListTitle = (strBranch, searchParams) => {
 
   if (strBranch.toLowerCase() === ProductListPaths.CATEGORY) {
     return (
-      <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+      <h2 className=" capitalize text-2xl font-extrabold tracking-tight text-gray-900">
         {searchParams.get("value")}
       </h2>
     );

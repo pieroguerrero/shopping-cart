@@ -9,8 +9,7 @@ import { getPopUpContent } from "./HambugerMenu.util";
  * @param {function():void} props.closeSideMenu
  * @param {Object[]} props.arrOptions
  * @param {string} props.arrOptions.title
- * @param {string} props.arrOptions.to
- * @param {any} props.location
+ * @param {string} props.arrOptions.uriParameter
  * @returns {JSX.Element}
  *
  */
@@ -18,23 +17,17 @@ const HamburgerMenuContent = ({
   strPortalDivId,
   closeSideMenu,
   arrOptions,
-  location,
 }) => {
   const navigateTo = useNavigate();
   return (
     <SidePopUp
       side="left"
       strPortalDivId={strPortalDivId}
-      strMaxWidth={"250px"}
+      strMaxWidth={"200px"}
       onClosePopUp={closeSideMenu}
-      strTitle=""
+      strTitle="Categories"
     >
-      {getPopUpContent(
-        arrOptions,
-        navigateTo,
-        closeSideMenu,
-        location.pathname
-      )}
+      {getPopUpContent(arrOptions, navigateTo, closeSideMenu)}
     </SidePopUp>
   );
 };

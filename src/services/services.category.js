@@ -3,6 +3,15 @@
  * @module Service_Category
  */
 
+import { callFetchRetry, strBASE_URL } from "./services.util";
+
+/**
+ * RequestInit configuration options
+ */
+const objRequestInit = {
+  mode: "cors",
+};
+
 /**
  * Mockuping the categories, since there is no testing API service by the time this app was build.
  */
@@ -39,10 +48,11 @@ const objCategories = [
 
 /**
  *
- * @returns {Promise<CategoryObject[]>}
+ * @returns {Promise<string[]>}
  */
 const getCategoryAll = () => {
-  return Promise.resolve(objCategories);
+  const strURL = strBASE_URL + "/products/categories";
+  return callFetchRetry(strURL, objRequestInit, 1);
 };
 
 export { getCategoryAll };

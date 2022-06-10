@@ -1,4 +1,4 @@
-import { callGet, strBASE_URL, callFetchRetry } from "./services.util";
+import { strBASE_URL, callFetchRetry } from "./services.util";
 
 /**
  * @module Service_Product
@@ -28,7 +28,7 @@ const getProductById = (strId) => {
  * @returns {Promise<Object[]>}
  */
 const getProductsByCategory = (strCategoryName) => {
-  const strURL = strBASE_URL + "/category/" + strCategoryName.trim();
+  const strURL = strBASE_URL + "/products/category/" + strCategoryName.trim();
 
   return callFetchRetry(strURL, objRequestInit, 1);
 };
@@ -43,4 +43,19 @@ const getProductsAll = () => {
   return callFetchRetry(strURL, objRequestInit, 1);
 };
 
-export { getProductById, getProductsByCategory, getProductsAll };
+/**
+ *
+ * @returns {Promise<Object[]>}
+ */
+const getProductsMostViwed = () => {
+  const strURL = strBASE_URL + "/products?limit=10";
+
+  return callFetchRetry(strURL, objRequestInit, 1);
+};
+
+export {
+  getProductById,
+  getProductsByCategory,
+  getProductsAll,
+  getProductsMostViwed,
+};

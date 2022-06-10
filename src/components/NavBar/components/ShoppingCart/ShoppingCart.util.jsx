@@ -104,7 +104,7 @@ const getCartContent = (
           </div>
         </div>
       ) : (
-        <div className="-m-2 p-2 py-6 text-center text-gray-900">
+        <div className=" w-[320px] -m-2 p-2 py-6 text-center text-gray-900">
           {"The Shopping Bag is empty."}
         </div>
       )}

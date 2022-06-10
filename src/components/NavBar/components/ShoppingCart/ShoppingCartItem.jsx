@@ -12,13 +12,16 @@ import { CartItem } from "../../../../models/models.cart";
 const ShoppingCartItem = ({ cartItem, addCartItem, deleteCartItem }) => {
   return (
     <>
-      <div className="h-auto w-24 flex-shrink-0 overflow-hidden rounded-md ">
+      <Link
+        to={"/product/" + cartItem.strId.split("-")[0]}
+        className="h-auto w-24 flex-shrink-0 overflow-hidden rounded-md "
+      >
         <img
           src={cartItem.strPicturePath}
           alt={cartItem.strProductName}
           className="h-full w-full object-contain object-center"
         />
-      </div>
+      </Link>
 
       <div className="ml-4 flex flex-1 flex-col">
         <div>

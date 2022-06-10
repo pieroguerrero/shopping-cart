@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { HamburgerMenuContent } from "./HambugerMenu.Content";
 
 /**
@@ -8,12 +7,11 @@ import { HamburgerMenuContent } from "./HambugerMenu.Content";
  * @param {string} props.strPortalDivId
  * @param {Object[]} props.arrOptions
  * @param {string} props.arrOptions.title
- * @param {string} props.arrOptions.to
+ * @param {string} props.arrOptions.uriParameter
  * @returns {JSX.Element}
  */
 const HamburgerMenu = ({ strPortalDivId, arrOptions }) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  const location = useLocation();
 
   const openSideMenu = () => {
     setIsSideMenuOpen(true);
@@ -50,7 +48,6 @@ const HamburgerMenu = ({ strPortalDivId, arrOptions }) => {
           closeSideMenu={closeSideMenu}
           strPortalDivId={strPortalDivId}
           arrOptions={arrOptions}
-          location={location}
         />
       ) : null}
     </>

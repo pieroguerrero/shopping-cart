@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { adaptProduct } from "../../adapters";
 import { CartContext } from "../../contexts/CartContext";
 import { Product } from "../../models";
@@ -107,7 +107,7 @@ const ProductPage = () => {
   return (
     <>
       {objProduct ? (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2">
           <div>
             <div className="pt-10 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16">
               <div className="sm:rounded-lg sm:overflow-hidden flex justify-center">
@@ -188,7 +188,7 @@ const ProductPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </main>
       ) : null}
     </>
   );
