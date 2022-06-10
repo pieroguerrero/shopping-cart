@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { ProductListPaths } from "./../../utilities/constants";
+import { BaseURLPath, ProductListPaths } from "./../../utilities/constants";
 
 const LandinPage = () => {
   const navigate = useNavigate();
   const onShopNow = () => {
-    navigate("/productlist/" + ProductListPaths.MOST_VIWED);
+    navigate(BaseURLPath + "/productlist/" + ProductListPaths.MOST_VIWED);
   };
 
   return (

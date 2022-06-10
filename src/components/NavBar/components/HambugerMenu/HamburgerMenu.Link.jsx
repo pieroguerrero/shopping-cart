@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { ProductListPaths } from "../../../../utilities/constants";
+import { BaseURLPath, ProductListPaths } from "../../../../utilities/constants";
 
 /**
  *
@@ -19,6 +19,7 @@ const HamburgerMenuLink = ({ objOption, navigateTo, closeSideMenu }) => {
         type="button"
         onClick={() => {
           const strUtl =
+            BaseURLPath +
             "/productlist/" +
             ProductListPaths.CATEGORY +
             "?value=" +

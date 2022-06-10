@@ -3,6 +3,7 @@ import { ShoppingCart } from "./components/ShoppingCart";
 import { HamburgerMenu } from "./components/HambugerMenu";
 import { NavBarMenu } from "./components/NavBarMenu/NavBarMenu";
 import { useRef } from "react";
+import { BaseURLPath } from "../../utilities/constants";
 
 /**
  *
@@ -63,7 +64,7 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
               />
               {/* <!-- Logo --> */}
               <div className="ml-4 flex lg:ml-0">
-                <Link to={"/"}>
+                <Link to={BaseURLPath}>
                   {/* <img
                     className="h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-mark.svg?color=blue&amp;shade=600"

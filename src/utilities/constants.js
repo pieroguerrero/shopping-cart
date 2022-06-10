@@ -6,5 +6,6 @@ const ProductListPaths = {
 };
 
 const PortalDivId = "div-portal";
+const BaseURLPath = "/shopping-cart";
 
-export { ProductListPaths, PortalDivId };
+export { ProductListPaths, PortalDivId, BaseURLPath };

@@ -21,10 +21,6 @@ const ProductListContent = ({ strBranch, searchParams }) => {
     });
   }, [strBranch, searchParams]);
 
-  if (arrProductList === null) {
-    console.log("arrProductList is NULL");
-  }
-
   return (
     <>
       {(() => {

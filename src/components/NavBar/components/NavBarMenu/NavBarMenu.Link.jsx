@@ -1,5 +1,5 @@
 import { NavLink, useSearchParams } from "react-router-dom";
-import { ProductListPaths } from "../../../../utilities/constants";
+import { BaseURLPath, ProductListPaths } from "../../../../utilities/constants";
 
 /**
  *
@@ -14,6 +14,7 @@ const NavBarMenuLink = ({ objOption }) => {
   return (
     <NavLink
       to={
+        BaseURLPath +
         "/productlist/" +
         ProductListPaths.CATEGORY +
         "?value=" +

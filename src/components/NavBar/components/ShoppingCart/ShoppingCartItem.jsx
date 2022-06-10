@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CartItem } from "../../../../models/models.cart";
+import { BaseURLPath } from "../../../../utilities/constants";
 
 /**
  *
@@ -13,7 +14,7 @@ const ShoppingCartItem = ({ cartItem, addCartItem, deleteCartItem }) => {
   return (
     <>
       <Link
-        to={"/product/" + cartItem.strId.split("-")[0]}
+        to={BaseURLPath + "/product/" + cartItem.strId.split("-")[0]}
         className="h-auto w-24 flex-shrink-0 overflow-hidden rounded-md "
       >
         <img
@@ -29,7 +30,7 @@ const ShoppingCartItem = ({ cartItem, addCartItem, deleteCartItem }) => {
             <h3>
               <Link
                 title={cartItem.strProductName}
-                to={"/product/" + cartItem.strId.split("-")[0]}
+                to={BaseURLPath + "/product/" + cartItem.strId.split("-")[0]}
               >
                 {(() => {
                   if (cartItem.strProductName.length <= 30) {
