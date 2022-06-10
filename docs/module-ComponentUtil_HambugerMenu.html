@@ -31,7 +31,7 @@
 
 
     <title>
-      Service_Util
+      ComponentUtil_HambugerMenu
     </title>
 
     <!--[if lt IE 9]>
@@ -98,7 +98,7 @@
     <div id="main" class="main-content">
       
       <h1 id='page-title' class="page-title">
-        Service_Util
+        ComponentUtil_HambugerMenu
       </h1>
       
 
@@ -137,81 +137,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="~strBASE_URL">
-    <a href="#~strBASE_URL">#</a>
-    <span class="type-signature">(inner, constant) </span>strBASE_URL<span class="type-signature"></span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>Definition of the base URL</p>
-</div>
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="services_services.util.js.html">services/services.util.js</a>, <a href="services_services.util.js.html#line79">line 79</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -221,9 +146,9 @@
 
     
 
-    <h4 class="name" id="~callGet">
-        <a href="#~callGet">#</a>
-        <span class="type-signature">(async, inner) </span>callGet<span class="signature">(strURL, objRequestInit)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span>
+    <h4 class="name" id="~getPopUpContent">
+        <a href="#~getPopUpContent">#</a>
+        <span class="type-signature">(inner) </span>getPopUpContent<span class="signature">(arrOptions, navigateTo, closeSideMenu)</span><span class="type-signature"> &rarr; {JSX.Element}</span>
     </h4>
 
     
@@ -264,7 +189,49 @@
 
         <tr>
             
-                <td class="name"><code>strURL</code></td>
+                <td class="name"><code>arrOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
             
 
             <td class="type">
@@ -287,13 +254,66 @@
 
         <tr>
             
-                <td class="name"><code>objRequestInit</code></td>
+                <td class="name"><code>uriParameter</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>navigateTo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>closeSideMenu</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
 
 
             
@@ -348,7 +368,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="services_services.util.js.html">services/services.util.js</a>, <a href="services_services.util.js.html#line49">line 49</a>
+                <a href="components_NavBar_components_HambugerMenu_HambugerMenu.util.jsx.html">components/NavBar/components/HambugerMenu/HambugerMenu.util.jsx</a>, <a href="components_NavBar_components_HambugerMenu_HambugerMenu.util.jsx.html#line17">line 17</a>
             </li></ul></dd>
         </div>
     
@@ -386,212 +406,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Object></span>
-
-
-    </dd>
-</dl>
-
-            
-    </div>
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~callGetWithURLParams">
-        <a href="#~callGetWithURLParams">#</a>
-        <span class="type-signature">(async, inner) </span>callGetWithURLParams<span class="signature">(strBaseURL, objURLParameters, objRequestInit)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span>
-    </h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
-        <strong>Parameters:</strong>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>strBaseURL</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>objURLParameters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>objRequestInit</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="services_services.util.js.html">services/services.util.js</a>, <a href="services_services.util.js.html#line13">line 13</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="method-member-container mt-20">
-    <strong>Returns:</strong>
-        
-            
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">JSX.Element</span>
 
 
     </dd>

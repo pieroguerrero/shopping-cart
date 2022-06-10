@@ -1,6 +1,6 @@
 /**
  *
- * @module "Util_HambugerMenu"
+ * @module ComponentUtil_HambugerMenu
  */
 
 import { HamburgerMenuLink } from "./HamburgerMenu.Link";
