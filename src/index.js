@@ -9,9 +9,11 @@ import { ProductPage } from "./pages/ProductPage/ProductPage";
 import { NotFound } from "./pages/NotFound";
 import { BaseURLPath } from "./utilities/constants";
 
+// @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //<React.StrictMode>
+
   <BrowserRouter>
     <Routes>
       <Route path={BaseURLPath} element={<App strPortalDivId="div-portal" />}>
@@ -22,5 +24,6 @@ root.render(
       </Route>
     </Routes>
   </BrowserRouter>
+
   //</React.StrictMode>
 );

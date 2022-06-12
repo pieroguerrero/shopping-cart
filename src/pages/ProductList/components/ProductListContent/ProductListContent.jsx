@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { LoadingShade } from "../../../../components/LoadingShade/LoadingShade";
-import { CartContext } from "./../../../../contexts/";
 import { getProducts, paraseProductList } from "./ProductListContent.util";
 
 /**
@@ -16,6 +15,7 @@ const ProductListContent = ({ strBranch, searchParams }) => {
 
   useEffect(() => {
     getProducts(strBranch, searchParams).then(function (response) {
+      // @ts-ignore
       setArrProductList(paraseProductList(response));
       setStateSearchParams(searchParams);
     });
@@ -28,6 +28,7 @@ const ProductListContent = ({ strBranch, searchParams }) => {
           return <LoadingShade />;
         }
 
+        // @ts-ignore
         if (arrProductList.length > 0) {
           return (
             <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">

@@ -9,6 +9,16 @@ module.exports = {
         color_primary_softer: "#3B82F6",
         color_tertiary: "#8BC9C8",
       },
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
+        "spin-once": "spin 1s linear 1",
+      },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-6deg)" },
+          "50%": { transform: "rotate(6deg)" },
+        },
+      },
     },
   },
   plugins: [],

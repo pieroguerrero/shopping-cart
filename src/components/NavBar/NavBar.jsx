@@ -30,6 +30,7 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
           </p>
           <button
             type="button"
+            // @ts-ignore
             onClick={() => refDivAd.current.classList.add("hidden")}
           >
             <svg
@@ -65,12 +66,6 @@ const NavBar = ({ arrOptions, strPortalDivId }) => {
               {/* <!-- Logo --> */}
               <div className="ml-4 flex lg:ml-0">
                 <Link to={BaseURLPath}>
-                  {/* <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=blue&amp;shade=600"
-                    alt="Shopping App"
-                  /> */}
-
                   <svg
                     className="h-8 w-auto"
                     viewBox="0 0 256 237"

@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "./../../../../contexts/CartContext";
 import { ShoppingCartContent } from "./ShoppingCart.Content";
@@ -14,6 +15,25 @@ const ShoppingCart = ({ strPortalDivId }) => {
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(false);
   const { getCartItems } = useContext(CartContext);
   const navigate = useNavigate();
+  const refBagIcon = useRef(null);
+  const refQtity = useRef(null);
+
+  const cantItems = countItems(getCartItems());
+  //const [stateCantItems, setStateCantItems] = useState(cantItems);
+
+  useEffect(() => {
+    // @ts-ignore
+    refBagIcon.current.classList.add("animate-spin-once", "text-color_primary");
+    refQtity.current.classList.add("text-color_primary");
+    setTimeout(() => {
+      // @ts-ignore
+      refBagIcon.current.classList.remove(
+        "animate-spin-once",
+        "text-color_primary"
+      );
+      refQtity.current.classList.remove("text-color_primary");
+    }, 2000);
+  }, [cantItems]);
 
   const openCartMenu = () => {
     setIsCartMenuOpen(true);
@@ -31,6 +51,7 @@ const ShoppingCart = ({ strPortalDivId }) => {
         onClick={openCartMenu}
       >
         <svg
+          ref={refBagIcon}
           className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -45,8 +66,11 @@ const ShoppingCart = ({ strPortalDivId }) => {
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           ></path>
         </svg>
-        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-          {countItems(getCartItems())}
+        <span
+          ref={refQtity}
+          className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800"
+        >
+          {cantItems}
         </span>
       </button>
       {isCartMenuOpen ? (

@@ -22,4 +22,6 @@ describe("ShoppingCart component", () => {
     );
     expect(screen.getByRole("button").childElementCount).toBe(2);
   });
+
+  it("Showing two products in the Shopping Cart popup", () => {});
 });

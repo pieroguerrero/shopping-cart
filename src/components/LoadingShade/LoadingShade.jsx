@@ -5,7 +5,7 @@ const LoadingShade = () => {
   return ReactDOM.createPortal(
     <div
       id="div-shade-loading"
-      className="absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"
+      className="overflow-hidden absolute top-0 left-0 bottom-0 w-full h-full bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"
     >
       <div className="w-20 h-auto">
         <svg

@@ -121,11 +121,12 @@ function App({ strPortalDivId }) {
     <CartContext.Provider
       value={{ addCartItem, getCartSubTotal, deleteCartItem, getCartItems }}
     >
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col  min-h-screen h-full relative">
         <NavBar strPortalDivId={strPortalDivId} arrOptions={arrOptions} />
         <div className="flex-1">
           <Outlet />
         </div>
+        <div id="div-portal"></div>
       </div>
     </CartContext.Provider>
   );

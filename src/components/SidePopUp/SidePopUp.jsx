@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
@@ -16,30 +17,36 @@ const SidePopUp = ({
   side,
   children,
   strPortalDivId,
+  // @ts-ignore
   strMaxWidth = "fit-content",
   onClosePopUp,
   strTitle,
 }) => {
   const redDivContainer = useRef(null);
-  useEffect(() => {
-    setTimeout(() => {
-      redDivContainer.current.classList.remove(
-        side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]"
-      );
-      redDivContainer.current.classList.add("translate-x-0");
-    }, 1);
-    // redDivContainer.current.scrollIntoView({
-    //   inline: "center",
-    //   block: "center",
-    //   behavior: "smooth",
-    // });
+  const redDivShade = useRef(null);
+  //const el = document.createElement("div");
+
+  useLayoutEffect(() => {
+    // @ts-ignore
+    redDivShade.current.scrollIntoView({ behavior: "smooth" });
+
+    //setTimeout(() => {
+    // @ts-ignore
+    redDivContainer.current.classList.remove(
+      side === "left" ? "translate-x-[-100%]" : "translate-x-full"
+    );
+    // @ts-ignore
+    redDivContainer.current.classList.add("translate-x-0");
+    //}, 1);
   }, [side]);
 
   const onClose = () => {
+    // @ts-ignore
     redDivContainer.current.classList.remove("translate-x-0");
 
+    // @ts-ignore
     redDivContainer.current.classList.add(
-      side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]"
+      side === "left" ? "translate-x-[-100%]" : "translate-x-full"
     );
 
     setTimeout(() => {
@@ -49,17 +56,25 @@ const SidePopUp = ({
 
   return ReactDOM.createPortal(
     <div
+      id="shade-div"
+      ref={redDivShade}
+      onClick={(e) => {
+        // @ts-ignore
+        if (e.target.id === redDivShade.current.id) {
+          onClose();
+        }
+      }}
       data-testid="div-sidepopup"
       className={
-        "flex-1 overflow-hidden absolute top-0 left-0 bottom-0 right-0 w-full h-screen bg-gray-600 bg-opacity-50 z-50 flex " +
+        "overflow-hidden absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 z-50 flex " +
         (side === "left" ? "justify-start" : "justify-end")
       }
     >
       <div
         ref={redDivContainer}
         className={
-          "relative overflow-x-hidden h-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
-          (side === "left" ? "translate-x-[-100%]" : "translate-x-[100%]")
+          "relative overflow-x-hidden max-h-screen h-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto max-w-xs sm:max-w-md transform transition ease-in-out duration-700 " +
+          (side === "left" ? "translate-x-[-100%]" : "translate-x-full")
         }
         //style={{ maxWidth: strMaxWidth }}
       >
@@ -117,6 +132,7 @@ const SidePopUp = ({
         </div>
       </div>
     </div>,
+    // @ts-ignore
     document.getElementById(strPortalDivId)
   );
 };
