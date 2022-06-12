@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useContext, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { adaptProduct } from "../../adapters";
@@ -15,9 +16,16 @@ import { SizePicker } from "./components/SizePicker/SizePicker";
 const ProductPage = () => {
   const { addCartItem } = useContext(CartContext);
   const refForm = useRef(null);
+  const refProduct = useRef(null);
   const objLocation = useLocation();
   const params = useParams();
   const [objProduct, setObjProduct] = useState(null);
+
+  useEffect(() => {
+    refProduct.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
 
   if (objLocation.state) {
     if (!objProduct) {
@@ -107,7 +115,10 @@ const ProductPage = () => {
   return (
     <>
       {objProduct ? (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2">
+        <main
+          ref={refProduct}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2"
+        >
           <div>
             <div className="pt-10 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16">
               <div className="sm:rounded-lg sm:overflow-hidden flex justify-center">

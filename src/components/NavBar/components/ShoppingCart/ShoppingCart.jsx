@@ -22,17 +22,24 @@ const ShoppingCart = ({ strPortalDivId }) => {
   //const [stateCantItems, setStateCantItems] = useState(cantItems);
 
   useEffect(() => {
-    // @ts-ignore
-    refBagIcon.current.classList.add("animate-spin-once", "text-color_primary");
-    refQtity.current.classList.add("text-color_primary");
-    setTimeout(() => {
+    if (cantItems !== 0) {
       // @ts-ignore
-      refBagIcon.current.classList.remove(
+      refBagIcon.current.classList.add(
         "animate-spin-once",
         "text-color_primary"
       );
-      refQtity.current.classList.remove("text-color_primary");
-    }, 2000);
+      // @ts-ignore
+      refQtity.current.classList.add("text-color_primary");
+      setTimeout(() => {
+        // @ts-ignore
+        refBagIcon.current.classList.remove(
+          "animate-spin-once",
+          "text-color_primary"
+        );
+        // @ts-ignore
+        refQtity.current.classList.remove("text-color_primary");
+      }, 2000);
+    }
   }, [cantItems]);
 
   const openCartMenu = () => {
