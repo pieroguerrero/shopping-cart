@@ -51,8 +51,19 @@ const objCategories = [
  * @returns {Promise<string[]>}
  */
 const getCategoryAll = () => {
-  const strURL = strBASE_URL + "/products/categories";
-  return callFetchRetry(strURL, objRequestInit, 1);
+  try {
+    const strURL = strBASE_URL + "/products/categories";
+    return callFetchRetry(strURL, objRequestInit, 1);
+  } catch (error) {
+    console.log("getCategoryAll.catch!");
+    console.error(error);
+    return Promise.resolve([
+      "electronics",
+      "jewelery",
+      "men's clothing",
+      "women's clothing",
+    ]);
+  }
 };
 
 export { getCategoryAll };
