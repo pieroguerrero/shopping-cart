@@ -8,6 +8,7 @@ import { createCart } from "./models/models.cart";
 import { CartItem } from "./models";
 import { adaptCategory } from "./adapters/";
 import uniqid from "uniqid";
+import { Credits } from "./components/Credit";
 
 /**
  *
@@ -126,6 +127,9 @@ function App({ strPortalDivId }) {
         <div className="flex-1">
           <Outlet />
         </div>
+        <footer className=" bg-color_primary text-white h-10">
+          <Credits />
+        </footer>
         <div id="div-portal"></div>
       </div>
     </CartContext.Provider>
