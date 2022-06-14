@@ -16,7 +16,7 @@ import { ProductListItem } from "./../ProductListItem";
  *
  * @param {string} strBranch
  * @param {URLSearchParams} searchParams
- * @returns {Promise<object[]>}
+ * @returns {Promise<Object[]>}
  */
 const getProducts = (strBranch, searchParams) => {
   if (strBranch.toLowerCase() === ProductListPaths.MOST_VIWED) {
@@ -31,9 +31,9 @@ const getProducts = (strBranch, searchParams) => {
     return Promise.resolve(["no value"]);
   }
 
-  if (strBranch.toLowerCase() === ProductListPaths.ALL) {
-    return getProductsAll();
-  }
+  //if (strBranch.toLowerCase() === ProductListPaths.ALL) {
+  return getProductsAll();
+  // }
 };
 
 /**

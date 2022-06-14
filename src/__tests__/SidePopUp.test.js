@@ -3,6 +3,8 @@ import { render, screen } from "@testing-library/react";
 
 describe("SidePopUp component", () => {
   it("Showing the Portal on top of all to the Rigth", () => {
+    Element.prototype.scrollIntoView = jest.fn();
+
     const children = (
       <div>
         {" "}
