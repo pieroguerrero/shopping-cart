@@ -58,7 +58,8 @@ const callGet = async (strURL, objRequestInit) => {
 
 const callFetchRetry = async (url, options, retries) => {
   try {
-    const response = await fetch(url, options);
+    //const response = await fetch(url, options);
+    const response = await fetch(url);
     if (response.ok) {
       const result = await response.json();
       return result;
@@ -69,7 +70,7 @@ const callFetchRetry = async (url, options, retries) => {
       console.log("CallFetchRetry has retried!");
       return callFetchRetry(url, options, retries - 1);
     }
-    console.error(error.message);
+    throw error;
   }
 };
 
