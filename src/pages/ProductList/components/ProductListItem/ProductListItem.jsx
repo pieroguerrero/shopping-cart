@@ -10,7 +10,7 @@ import { Product } from "../../../../models";
 const ProductListItem = ({ objProduct }) => {
   return (
     <div className="group relative flex flex-col h-full">
-      <div className="flex-1 flex items-center">
+      <div className="flex-1 flex items-center justify-center">
         <Link
           to={"../product/" + objProduct.strId}
           state={objProduct}
