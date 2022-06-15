@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../../../contexts/CartContext";
 import { SidePopUp } from "../../../SidePopUp";
 import { getCartContent } from "./ShoppingCart.util";
@@ -14,6 +15,7 @@ import { getCartContent } from "./ShoppingCart.util";
 const ShoppingCartContent = ({ strPortalDivId, closeSideMenu, navigateTo }) => {
   const { addCartItem, getCartSubTotal, deleteCartItem, getCartItems } =
     useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <SidePopUp
@@ -28,7 +30,8 @@ const ShoppingCartContent = ({ strPortalDivId, closeSideMenu, navigateTo }) => {
         getCartSubTotal(),
         addCartItem,
         deleteCartItem,
-        closeSideMenu
+        closeSideMenu,
+        navigate
       )}
     </SidePopUp>
   );

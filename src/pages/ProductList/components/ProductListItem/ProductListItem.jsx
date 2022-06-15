@@ -14,12 +14,12 @@ const ProductListItem = ({ objProduct }) => {
         <Link
           to={"../product/" + objProduct.strId}
           state={objProduct}
-          className="w-full flex items-center bg-white rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-auto"
+          className="flex items-center bg-white rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-auto"
         >
           <img
             src={objProduct.strImagePath}
             alt={objProduct.strTitle}
-            className="object-center"
+            className="object-center sm:h-auto sm:max-w-[160px]"
           />
         </Link>
       </div>

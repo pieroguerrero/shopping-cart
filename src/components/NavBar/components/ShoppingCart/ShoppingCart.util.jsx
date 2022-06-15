@@ -1,6 +1,8 @@
 import { SidePopUp } from "./../../../SidePopUp";
 import { ShoppingCartItem } from "./ShoppingCartItem";
 import { CartItem } from "../../../../models/models.cart";
+import { NavigateFunction } from "react-router-dom";
+import { BaseURLPath } from "../../../../utilities/constants";
 
 /**
  *
@@ -48,13 +50,15 @@ const countItems = (arrCartItems) => {
  * @param {function(CartItem):void} addCartItem
  * @param {function(string):boolean} deleteCartItem
  * @param {function():void} closeSideMenu
+ * @param {NavigateFunction} navigateTo
  */
 const getCartContent = (
   arrCartItems,
   dblCartSubTotal,
   addCartItem,
   deleteCartItem,
-  closeSideMenu
+  closeSideMenu,
+  navigateTo
 ) => {
   return (
     <>
@@ -82,6 +86,10 @@ const getCartContent = (
               </p>
               <div className="mt-6">
                 <button
+                  onClick={() => {
+                    navigateTo(BaseURLPath + "/checkout");
+                    closeSideMenu();
+                  }}
                   type="button"
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-color_primary px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-color_primary_darker"
                 >

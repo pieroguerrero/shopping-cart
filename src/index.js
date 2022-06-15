@@ -8,6 +8,7 @@ import { ProductList } from "./pages/ProductList";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
 import { NotFound } from "./pages/NotFound";
 import { BaseURLPath } from "./utilities/constants";
+import { CheckOut } from "./pages/CheckOut/CheckOut";
 
 // @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ root.render(
         <Route index element={<LandinPage />} />
         <Route path="productlist/:listId" element={<ProductList />} />
         <Route path="product/:productId" element={<ProductPage />} />
+        <Route path="checkout" element={<CheckOut />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

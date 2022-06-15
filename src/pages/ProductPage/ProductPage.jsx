@@ -117,7 +117,7 @@ const ProductPage = () => {
       {objProduct ? (
         <main
           ref={refProduct}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2"
+          className="max-w-7xl sm:pb-10 mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2"
         >
           <div>
             <div className="pt-10 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16">
@@ -125,7 +125,7 @@ const ProductPage = () => {
                 <img
                   src={objProduct.strImagePath}
                   alt={objProduct.strTitle}
-                  className=" w-[80%] h-auto sm:w-full sm:h-full object-center object-cover"
+                  className="w-[80%] h-auto sm:w-[70%] object-center object-cover"
                 />
               </div>
             </div>
